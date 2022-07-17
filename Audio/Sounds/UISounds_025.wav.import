@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/UISounds_025.wav-dfb7589ceb8d4432fe8350c248a29d49.sample"
+
+[deps]
+
+source_file="res://Audio/Sounds/UISounds_025.wav"
+dest_files=[ "res://.import/UISounds_025.wav-dfb7589ceb8d4432fe8350c248a29d49.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

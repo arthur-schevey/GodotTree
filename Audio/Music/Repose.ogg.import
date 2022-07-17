@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Repose.ogg-214b5dd24ebad627de1783f830faf288.oggstr"
+
+[deps]
+
+source_file="res://Audio/Music/Repose.ogg"
+dest_files=[ "res://.import/Repose.ogg-214b5dd24ebad627de1783f830faf288.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -1,0 +1,116 @@
+[gd_scene load_steps=18 format=2]
+
+[ext_resource path="res://Icons/Golden Sword.png" type="Texture" id=1]
+[ext_resource path="res://Icons/hourglass.png" type="Texture" id=2]
+[ext_resource path="res://Textures/25_PixelSky.png" type="Texture" id=3]
+[ext_resource path="res://Scripts/Skills.gd" type="Script" id=4]
+[ext_resource path="res://Scripts/CameraController.gd" type="Script" id=5]
+[ext_resource path="res://Node.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Icons/Book 3.png" type="Texture" id=7]
+[ext_resource path="res://Icons/Crosshairs.png" type="Texture" id=8]
+[ext_resource path="res://Icons/Golden Key.png" type="Texture" id=9]
+[ext_resource path="res://Audio/Sounds/UISounds_026.wav" type="AudioStream" id=10]
+[ext_resource path="res://Shaders/CanvasBlur.gdshader" type="Shader" id=11]
+[ext_resource path="res://Textures/21_PixelSky.png" type="Texture" id=12]
+[ext_resource path="res://Textures/03_PixelSky.png" type="Texture" id=13]
+[ext_resource path="res://Audio/Music/Repose.ogg" type="AudioStream" id=14]
+
+[sub_resource type="ShaderMaterial" id=1]
+shader = ExtResource( 11 )
+shader_param/blur_amount = 2.667
+
+[sub_resource type="ImageTexture" id=2]
+size = Vector2( 1000, 200 )
+
+[sub_resource type="AudioStreamRandomPitch" id=3]
+audio_stream = ExtResource( 10 )
+random_pitch = 1.63
+
+[node name="Canvas" type="Node2D"]
+script = ExtResource( 4 )
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2( 0.5, 0.5 )
+
+[node name="Background" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2( 0, -3.05176e-05 )
+scale = Vector2( 5.4375, 5.43704 )
+texture = ExtResource( 3 )
+
+[node name="Background2" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2( 0.638485, -715.059 )
+scale = Vector2( 5.4375, 5.43704 )
+texture = ExtResource( 12 )
+
+[node name="Background3" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2( -0.0141602, 695.647 )
+scale = Vector2( 5.4375, 5.43704 )
+texture = ExtResource( 13 )
+flip_v = true
+
+[node name="Blur" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+material = SubResource( 1 )
+position = Vector2( -0.442505, 10.6205 )
+scale = Vector2( 4.24514, 14.1212 )
+texture = SubResource( 2 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+zoom = Vector2( 0.5, 0.5 )
+limit_smoothed = true
+smoothing_enabled = true
+smoothing_speed = 10.0
+script = ExtResource( 5 )
+
+[node name="Tween" type="Tween" parent="Camera2D"]
+
+[node name="Sprite" type="Sprite" parent="Camera2D"]
+z_index = 1000
+texture = ExtResource( 8 )
+hframes = 7
+vframes = 4
+frame = 21
+
+[node name="Root" parent="." instance=ExtResource( 6 )]
+sprite = ExtResource( 2 )
+text = "Root"
+text_offset = 140
+
+[node name="Physical" parent="Root" instance=ExtResource( 6 )]
+position = Vector2( -106.087, 70.2669 )
+sprite = ExtResource( 1 )
+text = "Phys"
+
+[node name="Node1" parent="Root/Physical" instance=ExtResource( 6 )]
+position = Vector2( -106.087, 70.2669 )
+sprite = ExtResource( 9 )
+text = "Node1"
+
+[node name="Node2" parent="Root/Physical" instance=ExtResource( 6 )]
+position = Vector2( -76.9514, 135.673 )
+text = "Node2"
+
+[node name="Mental" parent="Root" instance=ExtResource( 6 )]
+position = Vector2( 113.699, 73.3645 )
+sprite = ExtResource( 7 )
+text = "Int"
+
+[node name="Node3" parent="Root/Mental" instance=ExtResource( 6 )]
+position = Vector2( 134.727, -21.302 )
+text = "Node3"
+
+[node name="Node4" parent="Root/Mental" instance=ExtResource( 6 )]
+position = Vector2( 138.295, 59.564 )
+text = "Node4"
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 14 )
+volume_db = -25.083
+
+[node name="AudioFX" type="AudioStreamPlayer" parent="."]
+stream = SubResource( 3 )

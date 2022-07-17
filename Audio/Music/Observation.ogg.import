@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Observation.ogg-ce1feccff52a7dfe6675ec9238e8cc3c.oggstr"
+
+[deps]
+
+source_file="res://Audio/Music/Observation.ogg"
+dest_files=[ "res://.import/Observation.ogg-ce1feccff52a7dfe6675ec9238e8cc3c.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
